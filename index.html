@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Loan Calculato Application</title>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+  <style>
+    h1 {
+      font-size: 22px;
+    }
+
+    h4 {
+      color: black;
+      font-size: 22px;
+    }
+
+    ion-title {
+      font-size: 30px;
+    }
+
+#result th,
+#result tr,
+#result td {
+    border: 1px solid;
+    border-color: #4444442e;
+    padding: .3rem .5rem;
+}
+
+
+/* forms */
+
+
+/* Custom Spinner */
+
+div#loader-holder {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: brightness(0.5);
+    z-index: 33;
+}
+
+#loader-holder * {
+    color: #fff
+}
+
+.loader-spinner {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.loader-spinner:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loader-spinner 1.2s linear infinite;
+}
+
+@keyframes loader-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  </style>
+</head>
+
+<body>
+  <ion-app>
+    <div id="loader-holder">
+      <div class="loader-spinner"></div>
+      <div>
+        <center><small>Please wait...</small></center>
+      </div>
+    </div>
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-buttons slot="primary">
+        </ion-buttons>
+        <ion-title class="ion-text-center">Loan Calculator</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <!--App main content-->
+    <ion-content id="form-holder">
+      <!--Grid component-->
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <!--Card component-->
+            <ion-card color="danger">
+              <ion-card-header>
+                <ion-card-title class="ion-text-center">
+                  <h1>Loan Calculator</h1>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content id="form-holder">
+
+                <!--1st input-->
+                <form action="" id="calculate-loan-form">
+                <ion-item>
+                  <ion-label color="dark" position="floating"> Enter Loan Amount </ion-label>
+                  <ion-input color="dark" type="number" name="loan-amount" id="loan-amount"
+                    placeholder="Enter Loan Amount"></ion-input>
+                </ion-item>
+
+                <!--1st input-->
+                <ion-item>
+                  <ion-label color="dark" position="floating"> Enter Loan Interest </ion-label>
+                  <ion-input color="dark" type="number" name="loan-interest" id="loan-interest"
+                    placeholder="Enter Loan Interest"></ion-input>
+                </ion-item>
+
+                <!--1st input-->
+                <ion-item>
+                  <ion-label color="dark" position="floating"> Years to Pay </ion-label>
+                  <ion-input color="dark" type="number" name="loan-years" id="loan-years"
+                    placeholder="Years to Pay"></ion-input>
+                </ion-item>
+
+                <!--Button-->
+                <br>
+                <div>
+
+                  <ion-button id="calculate-btn" type="submit" fill="outline" color="light" expand="block" shape="round">
+                    <ion-icon slot="start" name="add-outline" ></ion-icon> Calculate
+                  </ion-button>
+
+                  <ion-button id="reset-btn" type="reset" color="dark" expand="block" shape="round">
+                    <ion-icon slot="start" name="close-outline"></ion-icon> Clear
+                  </ion-button>
+                </div>
+              </form>
+                <br>
+
+
+
+              </ion-card-content>
+            </ion-card>
+            <!--END Card component-->
+
+
+         
+
+        <!--output using list component-->
+        <table id="result">
+          <colgroup>
+              <col width="50%">
+              <col width="50%">
+          </colgroup>
+          <tbody>
+              <tr>
+                  <td class=""><b>Principal</b></td>
+                  <td class="text-right" id="principal"></td>
+              </tr>
+              <tr>
+                  <td class=""><b>Annual Rate</b></td>
+                  <td class="text-right" id="annual-interest"></td>
+              </tr>
+              <tr>
+                  <td class=""><b>Loan Terms</b></td>
+                  <td class="text-right" id="loan-terms"></td>
+              </tr>
+              <tr>
+                  <td class=""><b>Monthly Payable</b></td>
+                  <td class="text-right" id="monthly-pay"></td>
+              </tr>
+              <tr>
+                  <td class=""><b>Total Cost</b></td>
+                  <td class="text-right" id="total-pay"></td>
+              </tr>
+              <tr>
+                  <td class=""><b>Total Interest</b></td>
+                  <td class="text-right" id="total-interest"></td>
+              </tr>
+            </table>
+
+              <!-- END output using list component-->
+
+        </ion-grid>
+        <!-- END Grid component-->
+    </ion-content>
+    <!--END App main content-->
+    <ion-alert></ion-alert>
+  </ion-app>
+
+</ion-col>
+</ion-row>
+
+  <!--Javascript-->
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+
+</body>
+
+</html>
